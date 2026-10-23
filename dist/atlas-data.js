@@ -1,0 +1,66 @@
+export const ATLAS={name:"数学",en:"Mathematics",color:"#d9f4ff",description:"研究数量、结构、空间、变化与不确定性的统一语言。它以定义和证明建立可靠知识，也通过模型、计算与抽象连接自然和社会世界。",children:[
+{name:"基础与逻辑",en:"Foundations & Logic",color:"#7d8cff",description:"数学的语言与逻辑底座：研究什么可以定义、证明和计算，以及各种数学结构如何建立。",children:[
+{name:"数理逻辑",description:"用形式系统研究推理、证明与可判定性。",topics:["命题逻辑","一阶逻辑","证明论","可计算性"]},
+{name:"集合论",description:"以集合和关系构造数学对象，并研究无限的层级。",topics:["公理集合论","基数","序数","选择公理"]},
+{name:"模型论",description:"研究形式语言与满足这些语言的数学结构。",topics:["结构与理论","完备性","紧致性","稳定性"]},
+{name:"范畴论",description:"用对象与态射描述不同数学领域之间的共同结构。",topics:["函子","自然变换","极限","伴随"]},
+{name:"类型论",description:"把逻辑、程序与数学构造统一在类型系统中。",topics:["依赖类型","同伦类型论","构造主义","形式验证"]}]},
+{name:"结构数学",en:"Algebra & Structures",color:"#3ca8ff",description:"研究运算、对称性与抽象结构，是数论、几何、物理和计算的共同骨架。",children:[
+{name:"线性代数",description:"研究向量空间及保持线性结构的变换。",topics:["矩阵","线性映射","特征值","张量"]},
+{name:"抽象代数",description:"以群、环、域概括运算与对称性。",topics:["群论","环论","域论","模论"]},
+{name:"李群与李代数",description:"研究连续对称及其无穷小结构。",topics:["矩阵群","李代数","表示","对称性"]},
+{name:"表示论",description:"把抽象代数结构实现为线性变换。",topics:["群表示","特征标","模表示","调和分析"]},
+{name:"交换代数",description:"研究交换环、理想与代数几何的局部语言。",topics:["理想","局部化","Noether环","同调代数"]}]},
+{name:"分析数学",en:"Analysis",color:"#45d47b",description:"研究极限、连续、变化和无穷过程，为微分方程、概率和科学模型提供工具。",children:[
+{name:"微积分",description:"描述连续变化、累积与局部近似。",topics:["极限","微分","积分","多元微积分"]},
+{name:"实分析",description:"严格研究实数上的极限、函数与积分。",topics:["序列与级数","连续性","勒贝格积分","函数空间"]},
+{name:"复分析",description:"研究复变量解析函数及其高度刚性结构。",topics:["解析函数","留数","共形映射","黎曼曲面"]},
+{name:"泛函分析",description:"在无穷维空间中研究函数与算子。",topics:["Banach空间","Hilbert空间","算子理论","谱理论"]},
+{name:"微分方程",description:"用方程刻画随时间或空间变化的系统。",topics:["常微分方程","偏微分方程","动力系统","边值问题"]},
+{name:"调和分析",description:"把函数分解为频率成分并研究其规律。",topics:["傅里叶分析","小波","奇异积分","表示"]}]},
+{name:"几何与拓扑",en:"Geometry & Topology",color:"#ffb33f",description:"研究空间、形状、曲率及连续变形中保持不变的性质。",children:[
+{name:"经典几何",description:"研究距离、角度、曲线和不同公理下的空间。",topics:["欧氏几何","非欧几何","射影几何","凸几何"]},
+{name:"微分几何",description:"用微积分研究曲线、曲面与流形的曲率。",topics:["流形","黎曼几何","曲率","纤维丛"]},
+{name:"拓扑学",description:"研究连续变形下不变的空间性质。",topics:["点集拓扑","同伦","同调","结理论"]},
+{name:"代数几何",description:"用多项式方程与代数工具研究几何空间。",topics:["代数簇","概形","层","上同调"]},
+{name:"代数拓扑",description:"以代数不变量区分和研究拓扑空间。",topics:["基本群","同调群","上同调","谱序列"]},
+{name:"辛几何",description:"研究经典力学相空间中的几何结构。",topics:["辛流形","Hamilton系统","接触几何","镜像对称"]}]},
+{name:"离散数学",en:"Discrete Mathematics",color:"#ff835d",description:"研究可数、有限与组合结构，是算法、网络、密码学和理论计算机科学的基础。",children:[
+{name:"组合数学",description:"研究有限对象的计数、构造与极值规律。",topics:["枚举组合","极值组合","生成函数","组合设计"]},
+{name:"图论",description:"以顶点和边描述关系、网络与连接。",topics:["路径与连通","匹配","图染色","网络流"]},
+{name:"数论",description:"研究整数、素数及其深层结构。",topics:["初等数论","解析数论","代数数论","丢番图方程"]},
+{name:"离散几何",description:"研究有限几何对象的排列与组合性质。",topics:["多面体","铺砌","计算几何","凸体"]},
+{name:"博弈与决策",description:"研究多个参与者的策略互动与均衡。",topics:["组合博弈","博弈论","社会选择","机制设计"]}]},
+{name:"概率与统计",en:"Probability & Statistics",color:"#ff5f91",description:"用概率刻画随机性，并从数据中估计、检验与预测未知规律。",children:[
+{name:"概率论",description:"为随机事件、变量和极限定律建立数学基础。",topics:["概率空间","随机变量","大数定律","中心极限定理"]},
+{name:"随机过程",description:"研究随时间或空间演化的随机系统。",topics:["Markov链","Brown运动","鞅","点过程"]},
+{name:"数理统计",description:"研究估计、检验和抽样方法的理论性质。",topics:["参数估计","假设检验","回归","渐近理论"]},
+{name:"贝叶斯统计",description:"以先验和观测数据更新不确定性。",topics:["先验与后验","MCMC","层次模型","贝叶斯决策"]},
+{name:"随机分析",description:"把微积分与微分方程推广到随机过程。",topics:["Itô积分","随机微分方程","随机控制","滤波"]},
+{name:"信息论",description:"定量研究信息、压缩、通信与不确定性。",topics:["熵","信道容量","编码理论","互信息"]}]},
+{name:"计算与优化",en:"Computation & Optimization",color:"#34d7c5",description:"把数学问题转化为稳定、高效且可验证的算法，连接理论与大规模现实计算。",children:[
+{name:"数值分析",description:"研究连续数学问题的近似计算与误差。",topics:["数值线性代数","插值","数值积分","误差分析"]},
+{name:"最优化",description:"在约束下寻找目标函数的最优解。",topics:["凸优化","非线性规划","组合优化","最优控制"]},
+{name:"科学计算",description:"以高性能计算模拟复杂科学与工程系统。",topics:["有限元","有限差分","并行计算","多尺度方法"]},
+{name:"符号计算",description:"让计算机直接操作公式与代数表达式。",topics:["计算机代数","自动推理","Gröbner基","精确计算"]},
+{name:"算法与复杂性",description:"研究计算方法的正确性、效率与根本限制。",topics:["算法设计","复杂度类","随机算法","近似算法"]}]},
+{name:"应用与交叉",en:"Applied & Interdisciplinary",color:"#ba78ff",description:"把数学结构用于解释、预测和设计自然、工程、生命与社会系统。",children:[
+{name:"数学物理",description:"以数学结构表达物质、能量与时空规律。",topics:["量子理论","相对论","统计力学","场论"]},
+{name:"工程数学",description:"服务控制、信号、流体和系统设计。",topics:["控制理论","信号处理","流体力学","偏微分模型"]},
+{name:"计算机科学",description:"研究计算、信息与智能系统的数学基础。",topics:["密码学","形式语言","机器学习","计算理论"]},
+{name:"生物数学",description:"用模型研究生命系统的结构和演化。",topics:["种群动力学","流行病模型","系统生物学","神经动力学"]},
+{name:"金融数学",description:"量化价格、风险、投资与市场不确定性。",topics:["随机金融","衍生品定价","风险管理","投资组合"]},
+{name:"数据科学",description:"融合统计、计算与领域知识提取数据规律。",topics:["统计学习","数据挖掘","因果推断","可视化"]},
+{name:"运筹学",description:"用模型优化资源配置、调度和决策。",topics:["线性规划","排队论","库存模型","网络优化"]}]},
+{name:"统一视角",en:"Unifying Perspectives",color:"#6de0ff",description:"从对象、结构、变换与不变量理解不同数学分科为何能彼此连接。",children:[
+{name:"对象",description:"数学研究的载体，从数与函数到空间和范畴。",topics:["数","函数","空间","关系"]},
+{name:"结构",description:"对象之间满足的运算、关系与公理。",topics:["代数结构","拓扑结构","序结构","概率结构"]},
+{name:"变换",description:"保持某种结构的映射揭示对象之间的关系。",topics:["同态","连续映射","微分同胚","函子"]},
+{name:"不变量",description:"在允许的变换下保持不变的量或结构。",topics:["维数","特征值","同调","对称群"]},
+{name:"数学思维",description:"贯穿所有领域的抽象、严谨、结构和模型意识。",topics:["抽象化","严谨推理","结构化","模型化"]}]},
+{name:"历史与前沿",en:"History & Frontiers",color:"#ffd85a",description:"数学从度量与计算发展到抽象结构、计算智能和量子信息，并持续产生新问题。",children:[
+{name:"古典数学",description:"从计数、测量、几何和方程起步。",topics:["算术","欧氏几何","代数方程","天文计算"]},
+{name:"近代数学",description:"微积分、概率与解析几何重塑科学语言。",topics:["微积分诞生","解析几何","概率萌芽","经典力学"]},
+{name:"现代数学",description:"集合、公理、拓扑与抽象代数形成统一框架。",topics:["公理化","抽象结构","拓扑革命","现代概率"]},
+{name:"计算时代",description:"算法、计算机与数据扩展数学实践。",topics:["计算复杂性","计算机证明","科学计算","机器学习"]},
+{name:"未来方向",description:"探索量子信息、复杂系统及数学与人工智能的新结合。",topics:["量子计算","复杂网络","AI for Math","形式化数学"]}]}]};

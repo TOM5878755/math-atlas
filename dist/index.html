@@ -2,96 +2,43 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#030713">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <meta name="description" content="以群星方式探索数学主要分科的互动知识地图。">
-  <title>Math Atlas · 数学群星图</title>
-  <link rel="stylesheet" href="./styles.css?v=constellation-20261024">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#02040b">
+  <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
+  <meta name="description" content="一个可旋转、缩放和探索的 Three.js 3D 数学知识宇宙。">
+  <title>Math Atlas 3D · 数学知识宇宙</title>
+  <link rel="stylesheet" href="./styles.css?v=three-atlas-1">
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}
+  </script>
 </head>
 <body>
-  <canvas id="starfield" aria-hidden="true"></canvas>
-  <div class="aurora aurora-a" aria-hidden="true"></div>
-  <div class="aurora aurora-b" aria-hidden="true"></div>
-
-  <header class="topbar">
-    <a class="brand" href="#atlas" aria-label="返回数学群星图">
-      <span class="brand-mark">∑</span>
-      <span><strong>MATH ATLAS</strong><small>数学群星图</small></span>
-    </a>
-    <button class="about-button" id="aboutButton" type="button">
-      <span>使用方法</span><span aria-hidden="true">↗</span>
-    </button>
-  </header>
-
-  <main>
-    <section class="hero" id="atlas">
-      <div class="eyebrow"><span></span> THE UNIVERSE OF MATHEMATICS</div>
-      <h1>沿着群星，探索<br><em>数学的宇宙</em></h1>
-      <p class="lead">八个核心分科，组成一张可以漫游的知识星图。<br>点击任意星系，读一段简单介绍。</p>
-
-      <div class="atlas-shell">
-        <div class="atlas-map" id="atlasMap" aria-label="数学分科互动星图">
-          <svg class="connections" id="connections" aria-hidden="true"></svg>
-          <button class="core-star" id="coreStar" type="button" aria-label="查看数学总览">
-            <span class="core-rays"></span>
-            <span class="core-light">✦</span>
-            <span class="core-label"><strong>数学</strong><small>MATHEMATICS</small></span>
-          </button>
-          <div id="nodes"></div>
-          <p class="orbit-note"><span>拖动 / 滚动探索</span><span>点击星系查看简介</span></p>
-        </div>
-
-        <aside class="info-panel" id="infoPanel" aria-live="polite">
-          <button class="panel-close" id="panelClose" type="button" aria-label="关闭简介">×</button>
-          <div class="panel-number" id="panelNumber">00</div>
-          <div class="panel-kicker" id="panelKicker">MATH ATLAS</div>
-          <h2 id="panelTitle">数学，是发现模式的语言</h2>
-          <p id="panelDescription">从数量、空间到变化与不确定性，数学用抽象结构连接现实世界与想象世界。选择一颗分科主星，开始你的探索。</p>
-          <div class="panel-rule"></div>
-          <h3>代表主题</h3>
-          <div class="topic-list" id="topicList">
-            <span>结构</span><span>模式</span><span>推理</span><span>应用</span>
-          </div>
-          <p class="panel-question" id="panelQuestion">“世界中有哪些规律，可以被精确地表达？”</p>
-        </aside>
-      </div>
+  <div id="loading" class="loading"><div class="loading-star">✦</div><p>正在生成数学宇宙</p><span><i></i></span></div>
+  <main id="app">
+    <canvas id="universe" aria-label="可交互的三维数学知识星图"></canvas>
+    <header class="topbar">
+      <a class="brand" href="#" id="homeButton"><span class="brand-sigil">∑</span><span><b>MATH ATLAS</b><small>3D 数学知识宇宙</small></span></a>
+      <div class="search-wrap"><span>⌕</span><input id="searchInput" type="search" placeholder="搜索分科、概念或方向…" autocomplete="off" aria-label="搜索数学知识"><div id="searchResults" class="search-results"></div></div>
+      <button class="icon-button" id="helpButton" aria-label="查看操作说明">?</button>
+    </header>
+    <aside class="cluster-nav" aria-label="数学分科导航"><div class="nav-title"><span>知识星系</span><em id="nodeCount">0 STARS</em></div><div id="clusterList"></div></aside>
+    <section class="intro-card" id="introCard">
+      <p class="micro">A LIVING MAP OF MATHEMATICS</p><h1>数学不是目录，<br>而是一座<em>宇宙</em></h1>
+      <p>拖动旋转，滚轮缩放。点击恒星进入分科，观察概念之间的层级与联系。</p><button id="startButton">开始探索 <span>→</span></button>
     </section>
-
-    <section class="guide" id="guide">
-      <div class="guide-copy">
-        <span class="section-index">01 / HOW TO READ</span>
-        <h2>一张从核心向外生长的地图</h2>
-        <p>中心是共同的数学语言，彩色主星代表主要分科，环绕的小星点是典型主题。分科之间并非孤岛——连接线暗示它们共享的方法与问题。</p>
-      </div>
-      <div class="legend" id="legend" aria-label="分科颜色图例"></div>
+    <section class="detail-panel" id="detailPanel" aria-live="polite">
+      <button class="panel-close" id="closePanel" aria-label="关闭详情">×</button><div class="path" id="detailPath">数学宇宙</div>
+      <div class="detail-heading"><span class="detail-star">✦</span><div><p id="detailType">核心</p><h2 id="detailTitle">数学</h2></div></div>
+      <p class="detail-description" id="detailDescription"></p><div class="detail-meta"><span>下属星体</span><strong id="childCount">0</strong></div>
+      <div class="child-list" id="childList"></div><button class="focus-button" id="focusButton">聚焦此星系</button>
     </section>
-
-    <section class="quote-section">
-      <p>“每一个公式，都是一条通往未知星域的航线。”</p>
-      <span>继续点击星系，找到你感兴趣的方向</span>
-    </section>
+    <div class="controls-hint"><span><i>↔</i> 拖动旋转</span><span><i>＋</i> 滚动缩放</span><span><i>✦</i> 点击探索</span></div>
+    <div class="view-tools"><button id="resetButton" title="返回全景">⌂</button><button id="rotateButton" class="active" title="自动旋转">↻</button></div>
   </main>
-
-  <footer>
-    <span>MATH ATLAS / 数学群星图</span>
-    <span>为好奇心而绘制 · 2026</span>
-  </footer>
-
-  <dialog id="aboutDialog">
-    <button class="dialog-close" id="dialogClose" type="button" aria-label="关闭">×</button>
-    <span class="section-index">QUICK GUIDE</span>
-    <h2>如何探索这张星图？</h2>
-    <p>点击彩色主星查看分科简介；点击周围的小星点，可以直接聚焦到对应主题。按 <kbd>Esc</kbd> 可关闭说明。</p>
-    <div class="dialog-steps">
-      <div><b>01</b><span>选择星系</span></div>
-      <div><b>02</b><span>阅读简介</span></div>
-      <div><b>03</b><span>发现连接</span></div>
-    </div>
+  <dialog id="helpDialog"><button id="closeHelp" class="dialog-close">×</button><p class="micro">NAVIGATION GUIDE</p><h2>在数学宇宙中航行</h2>
+    <div class="help-grid"><div><b>01</b><h3>旋转</h3><p>鼠标或手指拖动星空，从任意角度观察知识结构。</p></div><div><b>02</b><h3>缩放</h3><p>滚轮或双指缩放，在全景和细分主题之间穿梭。</p></div><div><b>03</b><h3>探索</h3><p>点击恒星查看简介，再进入它的下属知识星体。</p></div></div>
   </dialog>
-
-  <script src="./script.js?v=constellation-20261024"></script>
+  <noscript>此网站需要启用 JavaScript 才能展示三维数学知识宇宙。</noscript>
+  <script type="module" src="./app.js?v=three-atlas-1"></script>
 </body>
 </html>
