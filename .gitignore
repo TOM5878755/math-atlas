@@ -1,0 +1,4 @@
+.openai/
+*.tar.gz
+.DS_Store
+

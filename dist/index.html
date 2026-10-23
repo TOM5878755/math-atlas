@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#030713">
+  <meta name="description" content="以群星方式探索数学主要分科的互动知识地图。">
+  <title>Math Atlas · 数学群星图</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="aurora aurora-a" aria-hidden="true"></div>
+  <div class="aurora aurora-b" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#atlas" aria-label="返回数学群星图">
+      <span class="brand-mark">∑</span>
+      <span><strong>MATH ATLAS</strong><small>数学群星图</small></span>
+    </a>
+    <button class="about-button" id="aboutButton" type="button">
+      <span>使用方法</span><span aria-hidden="true">↗</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="atlas">
+      <div class="eyebrow"><span></span> THE UNIVERSE OF MATHEMATICS</div>
+      <h1>沿着群星，探索<br><em>数学的宇宙</em></h1>
+      <p class="lead">八个核心分科，组成一张可以漫游的知识星图。<br>点击任意星系，读一段简单介绍。</p>
+
+      <div class="atlas-shell">
+        <div class="atlas-map" id="atlasMap" aria-label="数学分科互动星图">
+          <svg class="connections" id="connections" aria-hidden="true"></svg>
+          <button class="core-star" id="coreStar" type="button" aria-label="查看数学总览">
+            <span class="core-orbit orbit-one"></span>
+            <span class="core-orbit orbit-two"></span>
+            <span class="core-symbol">π</span>
+            <strong>数学</strong>
+            <small>MATHEMATICS</small>
+          </button>
+          <div id="nodes"></div>
+          <p class="orbit-note"><span>拖动 / 滚动探索</span><span>点击星系查看简介</span></p>
+        </div>
+
+        <aside class="info-panel" id="infoPanel" aria-live="polite">
+          <button class="panel-close" id="panelClose" type="button" aria-label="关闭简介">×</button>
+          <div class="panel-number" id="panelNumber">00</div>
+          <div class="panel-kicker" id="panelKicker">MATH ATLAS</div>
+          <h2 id="panelTitle">数学，是发现模式的语言</h2>
+          <p id="panelDescription">从数量、空间到变化与不确定性，数学用抽象结构连接现实世界与想象世界。选择一颗分科主星，开始你的探索。</p>
+          <div class="panel-rule"></div>
+          <h3>代表主题</h3>
+          <div class="topic-list" id="topicList">
+            <span>结构</span><span>模式</span><span>推理</span><span>应用</span>
+          </div>
+          <p class="panel-question" id="panelQuestion">“世界中有哪些规律，可以被精确地表达？”</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="guide" id="guide">
+      <div class="guide-copy">
+        <span class="section-index">01 / HOW TO READ</span>
+        <h2>一张从核心向外生长的地图</h2>
+        <p>中心是共同的数学语言，彩色主星代表主要分科，环绕的小星点是典型主题。分科之间并非孤岛——连接线暗示它们共享的方法与问题。</p>
+      </div>
+      <div class="legend" id="legend" aria-label="分科颜色图例"></div>
+    </section>
+
+    <section class="quote-section">
+      <p>“每一个公式，都是一条通往未知星域的航线。”</p>
+      <span>继续点击星系，找到你感兴趣的方向</span>
+    </section>
+  </main>
+
+  <footer>
+    <span>MATH ATLAS / 数学群星图</span>
+    <span>为好奇心而绘制 · 2026</span>
+  </footer>
+
+  <dialog id="aboutDialog">
+    <button class="dialog-close" id="dialogClose" type="button" aria-label="关闭">×</button>
+    <span class="section-index">QUICK GUIDE</span>
+    <h2>如何探索这张星图？</h2>
+    <p>点击彩色主星查看分科简介；点击周围的小星点，可以直接聚焦到对应主题。按 <kbd>Esc</kbd> 可关闭说明。</p>
+    <div class="dialog-steps">
+      <div><b>01</b><span>选择星系</span></div>
+      <div><b>02</b><span>阅读简介</span></div>
+      <div><b>03</b><span>发现连接</span></div>
+    </div>
+  </dialog>
+
+  <script src="./script.js"></script>
+</body>
+</html>
