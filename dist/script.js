@@ -35,6 +35,26 @@ function renderAtlas() {
     line.setAttribute("x2", x); line.setAttribute("y2", y);
     svg.appendChild(line);
 
+    // Each discipline is a cloud of stars rather than a single planet.
+    const seed = (index + 1) * 8191;
+    for (let si = 0; si < (mobile ? 14 : 24); si++) {
+      const n1 = Math.sin(seed + si * 12.9898) * 43758.5453;
+      const n2 = Math.sin(seed + si * 27.331) * 24634.6345;
+      const r1 = n1 - Math.floor(n1);
+      const r2 = n2 - Math.floor(n2);
+      const theta = r1 * Math.PI * 2;
+      const radius = 18 + Math.pow(r2, .72) * (mobile ? 52 : 78);
+      const speck = document.createElement("i");
+      speck.className = "cluster-speck";
+      speck.style.left = (x + Math.cos(theta) * radius) + "px";
+      speck.style.top = (y + Math.sin(theta) * radius * .62) + "px";
+      speck.style.setProperty("--node-color", d.color);
+      speck.style.setProperty("--s", (.7 + r1 * 2.1) + "px");
+      speck.style.setProperty("--a", (.24 + r2 * .62).toFixed(2));
+      speck.style.setProperty("--d", (1.8 + r1 * 3.4) + "s");
+      nodes.appendChild(speck);
+    }
+
     const wrap = document.createElement("div");
     wrap.className = "galaxy-node";
     wrap.style.left = x + "px"; wrap.style.top = y + "px";
